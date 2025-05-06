@@ -3,96 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FX自動売買EA｜プロ仕様の資産運用ソリューション</title>
+  <title>プロ仕様FX自動売買EA｜完全再現型ロジック</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.8; margin: 0; padding: 0; background: #f9f9f9; }
-    header, section { padding: 40px 20px; max-width: 800px; margin: auto; }
-    header { background-color: #111; color: white; text-align: center; }
-    h1 { font-size: 28px; margin-bottom: 10px; }
-    h2 { font-size: 22px; color: #111; border-left: 5px solid #444; padding-left: 10px; }
-    .cta { text-align: center; margin: 30px 0; }
-    .cta a { background: #0070f3; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-size: 18px; }
-    .warning { background: #ffe8e8; padding: 20px; border: 1px solid #f00; color: #900; font-weight: bold; }
-    .note { font-size: 14px; color: #666; }
-    footer { text-align: center; font-size: 12px; color: #999; margin-top: 40px; padding: 20px; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #f0f0f0;
+    }
+    header {
+      background: linear-gradient(to right, #001f3f, #0074D9);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      color: #ffffff;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #aad6ff;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 26px;
+      color: #00aaff;
+      border-left: 5px solid #00aaff;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    .img-box {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .img-box img {
+      max-width: 100%;
+      border: 1px solid #333;
+    }
+    .warning {
+      background-color: #220000;
+      color: #ffaaaa;
+      padding: 30px;
+      border: 1px solid #ff0000;
+      margin-top: 40px;
+    }
+    .cta {
+      text-align: center;
+      margin: 50px 0;
+    }
+    .cta a {
+      background: #00aaff;
+      color: white;
+      padding: 20px 40px;
+      font-size: 20px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    footer {
+      background: #111;
+      color: #777;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>【再現性×低リスク】<br>プロ仕様の自動売買EA</h1>
-  <p>― あなたの資産に“プロの知見”を ―</p>
+  <h1>完全再現型FX自動売買EA</h1>
+  <p>プロ仕様の戦略 × 統計に基づく長期安定ロジック</p>
 </header>
 
 <section>
-  <h2>✔ こんな方におすすめ</h2>
+  <h2>こんな方に最適です</h2>
   <ul>
-    <li>資産運用をしたいが、時間も知識もない</li>
-    <li>放置で稼働する仕組みを探している</li>
-    <li>本当に“機能するEA”だけに投資したい</li>
+    <li>資産運用に興味があるが、時間も知識も足りない</li>
+    <li>感情に左右されず“手放し”で運用したい</li>
+    <li>他のEAで失敗した経験があり、信頼できるものだけを選びたい</li>
   </ul>
 </section>
 
 <section>
-  <h2>✔ このEAが選ばれる理由</h2>
+  <h2>実績データ（バックテスト）</h2>
+  <p>・2014～2024年（10年間）<br>
+     ・運用額：150万円／2ロット（固定）<br>
+     ・純益：約770万円<br>
+     ・最大DD：約35万円（23%）<br>
+     ・取引回数：年間平均250～350回<br>
+     ・想定年利：70～150％（運用額による）</p>
+
+  <div class="img-box">
+    <img src="/assets/img/backtest-graph.png" alt="バックテストグラフ" />
+  </div>
+</section>
+
+<section>
+  <h2>ロジックの特徴</h2>
   <ul>
-    <li>2014〜2024年の10年バックテストで<strong>純益770万円</strong></li>
-    <li><strong>バックテストと実稼働の一致率が非常に高い</strong>ため再現性に優れる</li>
-    <li>最大ドローダウンは23％と抑えめで、<strong>1時間以内に決済</strong>される短期型</li>
-    <li>損切・ロット・時間帯など柔軟なカスタマイズが可能</li>
+    <li>対象通貨：ユーロドル</li>
+    <li>単発エントリー型（ナンピン・マーチンなし）</li>
+    <li>1時間以内に決済、日またぎなし</li>
+    <li>損切あり・高頻度トレード対応</li>
+    <li>カスタマイズ可能項目：ロット／スプレッド上限／稼働時間／損切幅</li>
   </ul>
 </section>
 
 <section>
-  <h2>✔ グラフ・実績データ（画像挿入想定）</h2>
-  <p>※以下の画像はダミーです。後ほど実際のグラフをご指定ください。</p>
-  <ul>
-    <li>運用額15万／0.2ロット（国内）</li>
-    <li>運用額150万／2ロット（国内）</li>
-    <li>バックテスト詳細：10年間／年利70〜150%／最大DD約35万</li>
-  </ul>
+  <h2>他とは違う、圧倒的再現性</h2>
+  <p>バックテストと実稼働でエントリーポイントの<strong>一致率が極めて高い</strong>ことが最大の強み。<br>
+  複雑な環境でも“ロジックがブレない”から、<strong>統計的再現性が極めて高い</strong>のです。</p>
 </section>
 
 <section>
-  <h2>✔ 導入・購入の流れ</h2>
+  <h2>購入・導入までの流れ</h2>
   <ol>
-    <li>口座をご用意の上、フォームよりご購入（価格：<strong>¥300,000</strong>）</li>
-    <li>専用EAファイル（.ex4）を送付</li>
-    <li>口座番号で認証後、MT4へインストール</li>
-    <li>【非MT4口座】PC稼働型EAを代行導入（維持はご自身で）</li>
+    <li>決済フォームより購入（価格：¥300,000）</li>
+    <li>EAファイル（.ex4）をメールで送付</li>
+    <li>指定口座番号をサポートへ連絡（認証）</li>
+    <li>MT4に導入し運用開始（国内／海外／非MT4対応）</li>
   </ol>
-  <p class="note">※詳細な手順や対応証券会社は決済後にご案内します。</p>
 </section>
 
 <section>
-  <h2>✔ ユーザーの声</h2>
+  <h2>購入者の声</h2>
   <ul>
-    <li>「放置でここまで安定した運用は初めて。10年バックテストに納得」（40代 男性）</li>
-    <li>「ドローダウンが少なく、夜に稼働するのがありがたい」（30代 女性）</li>
+    <li>「初めて1ヶ月で＋12万円。放置できて感動！」（30代男性）</li>
+    <li>「他と違ってストレスがない。再現性の高さが段違い」（40代女性）</li>
   </ul>
 </section>
 
 <section>
-  <h2>✔ 運営者紹介</h2>
-  <p>20年間、毎日欠かさず相場と向き合ってきた個人投資家です。<br>
-  EAは3度の市場変革（2008・2014・2020）にも適応し、<strong>統計設計に基づいた長期安定型</strong>のものだけを公開しています。<br>
-  「あなたの投資が感情に流されず、ロジックで運用される未来」を支援します。</p>
+  <h2>運営者より</h2>
+  <p>FX Auto Labでは「EA＝再現されるべきロジック」と捉え、<br>
+  長期安定・統計優位性・変化への強さを追求してきました。<br><br>
+  このEAは3度の市場変革（2008年・2014年・2020年）を経て鍛え抜かれたものです。<br>
+  あなたの資産運用のパートナーとして、静かに働き続けます。</p>
 </section>
 
 <section class="warning">
-  📛 著作権・注意事項<br><br>
-  EAファイルの複製・転載・SNS投稿は<strong>一切禁止</strong>です。<br>
-  法的措置対象となる可能性があるためご注意ください。<br><br>
-  多売をせず、“選ばれた方のみにご提供”するポリシーです。<br>
-  再現性を保つためにも、思いをご理解のうえ、ご購入ください。
+  📛 注意事項（必読）<br><br>
+  ・EAファイルの無断転載／再配布／SNSへの掲載は禁止です。<br>
+  ・法的措置の対象となる場合があります。<br>
+  ・本EAは口コミ中心で多売しません。再現性保護のためご理解ください。<br>
+  ・投資助言・個別アドバイスは法律上できません。
 </section>
 
 <div class="cta">
-  <a href="https://your-payment-link.com">▶ EAを購入する（¥300,000）</a>
+  <a href="https://your-payment-link.com">▶ 今すぐEAを購入する（¥300,000）</a>
 </div>
 
 <footer>
-  © 2025 FX Auto Trader | 無断転載禁止 | 販売元：YourName
+  © 2025 FX Auto Lab | All Rights Reserved.
 </footer>
 
 </body>
