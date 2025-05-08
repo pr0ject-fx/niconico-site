@@ -1,67 +1,904 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EURO-DOLLAR PRECISION TRADER - プロ仕様の低リスク高収益FX自動売買EA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
-  <link rel="stylesheet" href="/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      AOS.init({ once: true, duration: 1000 });
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EURO-DOLLAR PRECISION TRADER - プロ仕様の低リスク高収益FX自動売買EA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/600') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #FFD700;
+        }
+        
+        .hero-banner {
+            background-color: #000;
+            color: #FFD700;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border: 2px solid #FFD700;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        .dark-section {
+            background-color: #1A1A1A;
+            color: #fff;
+        }
+        
+        .light-section {
+            background-color: #F8F8F8;
+        }
+        
+        .gold-accent {
+            border-left: 5px solid #FFD700;
+            padding-left: 20px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #FFD700;
+        }
+        
+        .dark-section h2 {
+            color: #FFD700;
+        }
+        
+        .light-section h2 {
+            color: #222;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin: 25px 0 15px;
+            color: #FFD700;
+        }
+        
+        .dark-section h3 {
+            color: #FFD700;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background-color: #FFD700;
+            color: #000;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #FFD700;
+            color: #000;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .limited-notice {
+            font-size: 1rem;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            background-color: #222;
+            padding: 30px 20px;
+            text-align: center;
+            border-left: 2px solid #FFD700;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #fff;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .faq-item {
+            margin-bottom: 30px;
+        }
+        
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .faq-answer {
+            font-size: 1.1rem;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin: 40px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #444;
+        }
+        
+        .comparison-table th {
+            background-color: #222;
+            color: #FFD700;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+        
+        .comparison-table .highlight {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .steps-container {
+            counter-reset: step-counter;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step-item {
+            position: relative;
+            padding: 20px 20px 20px 70px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-item::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #FFD700;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: #000;
+            color: #888;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-banner {
+                font-size: 1.4rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
-
-<header class="bg-black text-white py-8 text-center">
-  <h1 class="text-3xl font-bold text-yellow-400">EURO-DOLLAR PRECISION TRADER</h1>
-  <p class="mt-2 text-lg">業界最高峰のプロトレーダーが開発した低リスク高収益FX自動売買システム</p>
-</header>
-
-<section class="bg-yellow-100 py-4 text-center">
-  <p class="text-yellow-700 font-semibold">※この情報は拡散禁止　知る人ぞ知る極秘EAシステム※</p>
-</section>
-
-<section class="bg-white py-20" data-aos="fade-up">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold text-gray-800 mb-4">年利70%〜150%の実績</h2>
-    <p class="text-lg mb-6">バックテストとリアル運用の一致率98%以上。</p>
-    <img src="/images/graph-main.png" alt="バックテストグラフ" class="mx-auto border border-yellow-400 rounded shadow">
-  </div>
-</section>
-
-<section class="bg-gray-100 py-20" data-aos="fade-up">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">導入手順</h2>
-    <ol class="space-y-6 max-w-2xl mx-auto list-decimal list-inside text-lg text-gray-700">
-      <li>購入後、MT4用のEAファイル（EX4形式）を送付</li>
-      <li>使用口座番号を認証（セキュリティ保護のため）</li>
-      <li>国内・海外・非MT4環境に応じた導入ガイド提供</li>
-      <li>設定完了後、即運用スタート</li>
-    </ol>
-  </div>
-</section>
-
-<section class="bg-white py-20" data-aos="fade-up">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">よくある質問（FAQ）</h2>
-    <div class="space-y-8">
-      <div>
-        <h3 class="text-xl font-semibold text-yellow-600">Q. なぜこのEAは安定して稼げるの？</h3>
-        <p class="text-gray-700">20年にわたる相場研究と、3つの市場変革を乗り越えたロジックにより構築されています。</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold text-yellow-600">Q. どのくらいの資金から始められる？</h3>
-        <p class="text-gray-700">最低15万円からでも可能です。推奨は50万円以上です。</p>
-      </div>
+<body>
+    <header>
+        <div class="header-content container">
+            <h1>EURO-DOLLAR PRECISION TRADER</h1>
+            <p class="subtitle">業界最高峰のプロトレーダーが開発した低リスク高収益FX自動売買システム</p>
+        </div>
+    </header>
+    
+    <div class="hero-banner container">
+        ※この情報は拡散禁止　知る人ぞ知る極秘EAシステム※
     </div>
-  </div>
-</section>
-
+    
+    <section class="dark-section">
+        <div class="container">
+            <h2>>> 年利70%〜150%の実績を持つプロ仕様FX自動売買システムを今だけ特別公開 <<</h2>
+            
+            <p style="text-align: center; font-style: italic; font-size: 1.3rem; margin-bottom: 30px;">
+                あなたはこれまで、どれだけのEAを試してきましたか？
+            </p>
+            
+            <ul style="list-style-type: none; max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem;">
+                <li>✖ 「結局は負けてしまった...」</li>
+                <li>✖ 「バックテストと実際の運用で結果が全く違った」</li>
+                <li>✖ 「初期費用を回収できなかった」</li>
+            </ul>
+            
+            <p style="text-align: center; font-weight: bold; font-size: 1.5rem; color: #FFD700;">
+                もう二度とそんな思いをする必要はありません。
+            </p>
+            
+            <img src="/api/placeholder/1000/500" alt="FX自動売買システムイメージ" style="margin-top: 40px; border: 5px solid #FFD700;">
+        </div>
+    </section>
+    
+    <section class="light-section">
+        <div class="container gold-accent">
+            <h2>なぜ一般的なEAは失敗するのか？</h2>
+            
+            <p>多くのEAは<strong>一時的な相場環境</strong>に最適化されています。しかし市場は常に変化し、<strong>過去20年で3度の大きな市場変革</strong>がありました：</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 40px 0;">
+                <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3 style="color: #d32f2f; text-align: center;">2008年</h3>
+                    <p style="text-align: center;">リーマンショック</p>
+                    <img src="/api/placeholder/300/200" alt="リーマンショック" style="margin-top: 15px;">
+                </div>
+                
+                <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3 style="color: #388e3c; text-align: center;">2014年</h3>
+                    <p style="text-align: center;">アベノミクス・暗号通貨台頭</p>
+                    <img src="/api/placeholder/300/200" alt="アベノミクス" style="margin-top: 15px;">
+                </div>
+                
+                <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3 style="color: #1976d2; text-align: center;">2020年</h3>
+                    <p style="text-align: center;">コロナショック</p>
+                    <img src="/api/placeholder/300/200" alt="コロナショック" style="margin-top: 15px;">
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-top: 30px;">
+                <span style="color: #d32f2f; background-color: #ffebee; padding: 3px 6px;">特にコロナショック以降、13年間有効だった多くのロジックが機能しなくなっています。</span>
+            </p>
+        </div>
+    </section>
+    
+    <section style="background-color: #000; padding: 30px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: #FFD700; font-size: 1.8rem; margin: 0;">
+                【極秘情報】20年間毎日相場を研究してきた私だからこそ気づいた"不変の法則"を活用
+            </h2>
+        </div>
+    </section>
+    
+    <section class="dark-section">
+        <div class="container">
+            <h2>『EURO-DOLLAR PRECISION TRADER』の圧倒的な優位性</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">10年</div>
+                    <div class="stat-label">検証期間<br>(2014年～2024年)</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">大市場変革を<br>乗り越えたロジック</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">98.7%</div>
+                    <div class="stat-label">バックテストと<br>実運用の一致率</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">23%</div>
+                    <div class="stat-label">最大ドローダウン<br>(業界平均の半分以下)</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <img src="/api/placeholder/1000/400" alt="バックテスト結果グラフ" style="border: 2px solid #FFD700;">
+            </div>
+        </div>
+    </section>
+    
+    <section class="light-section">
+        <div class="container">
+            <h2>圧倒的な実績</h2>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: stretch; margin: 30px 0;">
+                <div style="flex: 1; min-width: 220px; background-color: #000; color: #fff; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    <div style="font-size: 3rem; color: #FFD700; font-weight: bold;">150万円</div>
+                    <div>運用資金</div>
+                </div>
+                
+                <div style="flex: 1; min-width: 220px; background-color: #000; color: #fff; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    <div style="font-size: 3rem; color: #FFD700; font-weight: bold;">770万円</div>
+                    <div>10年間の純益</div>
+                </div>
+                
+                <div style="flex: 1; min-width: 220px; background-color: #000; color: #fff; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    <div style="font-size: 3rem; color: #FFD700; font-weight: bold;">70~150%</div>
+                    <div>年利<br>(運用額による)</div>
+                </div>
+                
+                <div style="flex: 1; min-width: 220px; background-color: #000; color: #fff; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    <div style="font-size: 3rem; color: #FFD700; font-weight: bold;">23%</div>
+                    <div>最大ドローダウン<br>(約35万円)</div>
+                </div>
+            </div>
+            
+            <img src="/api/placeholder/1000/500" alt="運用実績グラフ" style="margin: 40px auto; display: block; border: 2px solid #000;">
+            
+            <p style="text-align: center; font-style: italic; font-weight: bold; font-size: 1.2rem; margin-top: 30px;">
+                これほどの低リスク・高リターンを実現できるEAは他に存在しません。
+            </p>
+        </div>
+    </section>
+    
+    <section class="dark-section">
+        <div class="container">
+            <h2>なぜこのEAは違うのか？</h2>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">&#9733;</div>
+                    <h3 class="feature-title">絶対的な優位性を持つロジック</h3>
+                    <ul>
+                        <li><strong>単発エントリーで1ポジションのみ</strong><br>(複雑な管理が不要)</li>
+                        <li><strong>1時間以内に決済</strong><br>(翌日へのリスクなし)</li>
+                        <li><strong>確実な損切り設定</strong><br>(資金を守る最重要要素)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">&#9881;</div>
+                    <h3 class="feature-title">カスタマイズ可能な柔軟性</h3>
+                    <ul>
+                        <li><strong>ロット数調整</strong><br>(リスク許容度に合わせて)</li>
+                        <li><strong>スプレッド上限設定</strong><br>(不利な条件での取引を回避)</li>
+                        <li><strong>稼働時間設定</strong><br>(ライフスタイルに合わせて)</li>
+                        <li><strong>損切り幅調整</strong><br>(安全性の微調整)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">&#9832;</div>
+                    <h3 class="feature-title">長期安定性を重視した設計</h3>
+                    <ul>
+                        <li><strong>統計学に基づく確率論的アプローチ</strong></li>
+                        <li><strong>感情に左右されない冷静な判断</strong></li>
+                        <li><strong>市場変動に適応するアルゴリズム</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px;">
+                <h3 style="text-align: center;">一般的なEAとの比較</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>特徴</th>
+                            <th>一般的なEA</th>
+                            <th>当EA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>バックテスト期間</td>
+                            <td>1～3年</td>
+                            <td class="highlight">10年以上</td>
+                        </tr>
+                        <tr>
+                            <td>実運用との一致率</td>
+                            <td>40～60%</td>
+                            <td class="highlight">98%以上</td>
+                        </tr>
+                        <tr>
+                            <td>ドローダウン</td>
+                            <td>40～80%</td>
+                            <td class="highlight">23%</td>
+                        </tr>
+                        <tr>
+                            <td>市場変化への対応</td>
+                            <td>特定環境に最適化</td>
+                            <td class="highlight">あらゆる環境に対応</td>
+                        </tr>
+                        <tr>
+                            <td>データ検証</td>
+                            <td>限定的</td>
+                            <td class="highlight">徹底的・複合的</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #000; padding: 30px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: #FFD700; font-size: 1.8rem; margin: 0;" class="pulse">
+                【完全非公開】今回限りの特別提供
+            </h2>
+        </div>
+    </section>
+    
+    <section class="light-section">
+        <div class="container">
+            <h2>私がこのEAを一般公開する理由</h2>
+            
+            <div style="display: flex; align-items: center; margin-bottom: 40px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="/api/placeholder/400/400" alt="トレーダープロフィール" style="border-radius: 50%; margin: 0 auto;">
+                </div>
+                
+                <div style="flex: 2; min-width: 300px; padding: 20px;">
+                    <p style="font-size: 1.2rem;"><strong>私はこれまで20年間、プロのトレーダーとして市場と向き合ってきました。</strong></p>
+                    
+                    <p>このEAは、私が長年の経験と数千時間の研究から生み出した最高傑作です。通常、こうしたプロ仕様のシステムは機関投資家向けに数百万円で提供されるか、完全非公開となります。</p>
+                    
+                    <p>しかし、「真に価値あるシステムを広く提供したい」という思いから、<strong>限定的に</strong>一般の方にも提供することを決断しました。</p>
+                    
+                    <p style="font-style: italic; margin-top: 20px;">ただし、「優位性の希薄化」を防ぐため、販売数は厳しく制限しています。</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box pulse">
+                【価格】¥300,000（税込）
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="/api/placeholder/800/400" alt="EAの動作イメージ" style="border: 2px solid #000; margin-bottom: 30px;">
+                
+                <h3>あなたへの約束</h3>
+                
+                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 30px;">
+                    <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); text-align: center;">
+                        <img src="/api/placeholder/100/100" alt="回収イメージ" style="margin: 0 auto 15px;">
+                        <h4 style="color: #000; margin-bottom: 10px;">10か月以内の投資回収を目指せるシステム設計</h4>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); text-align: center;">
+                        <img src="/api/placeholder/100/100" alt="マニュアルイメージ" style="margin: 0 auto 15px;">
+                        <h4 style="color: #000; margin-bottom: 10px;">詳細なセットアップマニュアル完備</h4>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 250px; background-color: #fff; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); text-align: center;">
+                        <img src="/api/placeholder/100/100" alt="サポートイメージ" style="margin: 0 auto 15px;">
+                        <h4 style="color: #000; margin-bottom: 10px;">安心の導入サポート</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #000; padding: 50px 0; text-align: center;">
+        <div class="container">
+            <a href="#" class="cta-button pulse">今すぐ購入して資産を増やす</a>
+            <p class="limited-notice">※在庫残りわずか・売り切れ次第終了</p>
+        </div>
+    </section>
+    
+    <section class="light-section">
+        <div class="container">
+            <h2>導入の流れ</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <img src="/api/placeholder/800/300" alt="導入フロー" style="margin-bottom: 40px;">
+            </div>
+            
+            <div class="steps-container">
+                <h3>【購入後の手続き＆導入手順】</h3>
+                
+                <div class="step-item">
+                    <strong>購入完了後、MT4で利用できるEAファイル（EX4形式）をお送りします</strong>
+                </div>
+                
+                <div class="step-item">
+                    <strong>ご利用の証券会社口座番号での認証が必要です</strong>（優位性保護のため）
+                </div>
+                
+                <div class="step-item">
+                    <strong>各運用環境に合わせた導入方法があります
+                    <ul style="margin-top: 10px;">
+                        <li><strong>国内MT4会社の場合：</strong> FXTFなどスプレッドが狭い会社がおすすめ</li>
+                        <li><strong>海外会社の場合：</strong> 別途口座開設方法をご案内</li>
+                        <li><strong>国内非MT4会社の場合：</strong> 常時起動PCが必要（導入代行可能）</li>
+                    </ul>
+                </div>
+                
+                <div class="step-item">
+                    <strong>詳細なマニュアルに従って設定するだけで運用開始</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dark-section">
+        <div class="container">
+            <h2>運用実績詳細</h2>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;">
+                <div style="flex: 1; min-width: 300px; background-color: #222; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid #FFD700;">
+                    <h3 style="text-align: center; margin-bottom: 20px;">運用資金15万円の場合</h3>
+                    <img src="/api/placeholder/500/300" alt="少額運用実績" style="margin-bottom: 20px; border: 2px solid #FFD700;">
+                    <ul>
+                        <li>ロット数：0.2（国内レバレッジで計算）</li>
+                        <li>平均月利：約5-10%</li>
+                        <li>年間取引回数：約250-350回</li>
+                    </ul>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px; background-color: #222; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid #FFD700;">
+                    <h3 style="text-align: center; margin-bottom: 20px;">運用資金150万円の場合</h3>
+                    <img src="/api/placeholder/500/300" alt="標準運用実績" style="margin-bottom: 20px; border: 2px solid #FFD700;">
+                    <ul>
+                        <li>ロット数：2（国内レバレッジで計算）</li>
+                        <li>10年間の純益：約770万円</li>
+                        <li>年利：70～150%（運用額による）</li>
+                        <li>最大ドローダウン：約35万円(23%)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background-color: #111; padding: 30px; margin-top: 40px; border-left: 5px solid #FFD700;">
+                <h3 style="margin-bottom: 20px;">バックテスト詳細 (2014年～2024年)</h3>
+                <ul>
+                    <li><strong>検証期間：</strong> 10年間 (2014年～2024年)</li>
+                    <li><strong>運用資金：</strong> 150万円</li>
+                    <li><strong>ロット設定：</strong> 2ロット固定</li>
+                    <li><strong>純益：</strong> 約770万円</li>
+                    <li><strong>年利：</strong> 70～150%（運用額による）</li>
+                    <li><strong>最大ドローダウン：</strong> 約35万円 (23%)</li>
+                    <li><strong>取引回数：</strong> 300回（年間250～350回程度）</li>
+                </ul>
+                <img src="/api/placeholder/1000/400" alt="詳細バックテスト結果" style="margin-top: 30px; border: 2px solid #FFD700;">
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #000; padding: 30px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: #FFD700; font-size: 1.8rem; margin: 0;">
+                【重要】このEAについて知っておくべきこと
+            </h2>
+        </div>
+    </section>
+    
+    <section class="light-section">
+        <div class="container">
+            <h2>重要な注意事項</h2>
+            
+            <div style="background-color: #fff1f0; border-left: 5px solid #ff4d4f; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #cf1322; margin-bottom: 20px;">著作権と盗作に関する厳格な規約</h3>
+                <p><strong>絶対に守るべき規約：</strong></p>
+                <ul style="color: #333;">
+                    <li>EAの成績やロジックをSNSなどに掲載することは<span style="color: #cf1322; font-weight: bold;">厳禁</span>です</li>
+                    <li>ファイルの複製や改変は<span style="color: #cf1322; font-weight: bold;">一切禁止</span>しています</li>
+                    <li>第三者への譲渡・販売は<span style="color: #cf1322; font-weight: bold;">法的措置の対象</span>となります</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: bold;">これらの規約は、あなた自身の収益を守るためのものです。優位性のあるロジックが多く出回ると、みんなが同じタイミングでエントリーすることになり、勝率が下がってしまいます。</p>
+                <p>そのため、<span style="background-color: #ffccc7; padding: 2px 5px;">口コミや紹介による販売は一切お断り</span>しており、限定的な販売に留めています。この方針へのご理解をお願いいたします。</p>
+            </div>
+            
+            <div style="background-color: #e6f7ff; border-left: 5px solid #1890ff; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #0050b3; margin-bottom: 20px;">投資助言に関する法的制約</h3>
+                <p>「EAの運用に関してアドバイスをして欲しい」というお問い合わせをいただくことがありますが、<strong>法律上、システムの説明以外の投資アドバイスはできません</strong>。</p>
+                <p>個人的には最大限サポートしたいと考えていますが、現状では<span style="background-color: #bae7ff; padding: 2px 5px;">法律上の制約によりアドバイスすることができません</span>。</p>
+                <p>ただし、提示している過去データやEAの特徴についてのご質問には、喜んでお答えいたします。</p>
+            </div>
+            
+            <div style="background-color: #f6ffed; border-left: 5px solid #52c41a; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #389e0d; margin-bottom: 20px;">運用に関する重要な心構え</h3>
+                <p><span style="font-size: 1.2rem; font-weight: bold;">「必ず勝てる」投資は存在しない</span></p>
+                <p>ビジネスにおける投資では「10個投資して1つが成功すれば御の字」という考え方が一般的です。これは堀江貴文氏も言及している事実であり、成功している経営者が実践している投資哲学です。</p>
+                <p style="font-weight: bold; margin: 15px 0;">「9個を早めに損切りし、伸びているものだけを残す」</p>
+                <p>この原則は、投資信託やEAにも当てはまります。そのため、以下の点を理解した上で運用することが重要です：</p>
+                <ul>
+                    <li><strong>長期的な確率と統計に基づいたロジック</strong>が最も安定します</li>
+                    <li>過去20年で<strong>市場の基本ロジックが3回変革</strong>しました（リーマンショック・アベノミクス・コロナショック）</li>
+                    <li>特に<strong>コロナショック以降は、従来の常識が通用しなくなっています</strong></li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic; font-weight: bold;">本EAは、これら3つの大変革を乗り越えたロジックを採用していますが、未来の変化に対する保証はできません。しかし、統計に基づく設計により、どのような未来にも対応できる仕様になっています。</p>
+                <div style="background-color: #d9f7be; padding: 15px; margin-top: 20px; text-align: center;">
+                    <p style="font-size: 1.2rem; font-weight: bold;">「長期目線で投資をすればするほど安定した運用ができる」</p>
+                    <p style="margin-top: 10px;">このEAは「新規上場企業の株を購入した」という心構えで、<br>数年単位での運用をお勧めします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dark-section">
+        <div class="container">
+            <h2>よくある質問 (FAQ)</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. なぜ一般的なEAよりも成績が安定しているのですか？</p>
+                <div class="faq-answer">
+                    <p>一般的なEAの多くは特定の市場環境に最適化されていますが、本EAは20年間の市場研究から導き出された「不変の法則」に基づいています。また、単発エントリーと確実な損切り設定により、リスクを最小限に抑えつつリターンを最大化する設計となっています。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. このEAの最大の強みは何ですか？</p>
+                <div class="faq-answer">
+                    <p>最大の強みは「バックテストと実運用の一致率の高さ」です。多くのEAはバックテストでは好成績を示しても、実際の運用では全く違う結果になることが多いです。本EAは98.7%という驚異的な一致率を誇り、再現性の高さが証明されています。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. 最低どれくらいの運用資金が必要ですか？</p>
+                <div class="faq-answer">
+                    <p>最低15万円から運用が可能です。ただし、最大ドローダウンを考慮すると、余裕を持って50万円以上の運用資金があることが望ましいです。運用資金が多いほど、ロット数を調整することでリスクとリターンのバランスを最適化できます。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. どのくらいの時間がかかりますか？自分で管理する必要がありますか？</p>
+                <div class="faq-answer">
+                    <p>完全自動化されているため、設定後はほとんど管理不要です。1ポジションあたり最大1時間以内に決済されるため、翌日へのリスクがなく、長時間PCを監視する必要もありません。週に1度程度の簡単なチェックで十分です。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. なぜこのEAを限定販売しているのですか？</p>
+                <div class="faq-answer">
+                    <p>「優位性の希薄化」を防ぐためです。同じロジックのEAが市場に多く出回ると、同じタイミングでの取引が増え、結果的に勝率が下がってしまいます。あなたの利益を守るためにも、販売数を厳しく制限しています。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. 通常時間帯や夜間も稼働しますか？</p>
+                <div class="faq-answer">
+                    <p>はい、24時間稼働可能です。ただし、最も効率的なエントリーが発生する時間帯を設定することも可能で、カスタマイズによりご自身のライフスタイルに合わせた運用が可能です。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. 他の通貨ペアにも対応していますか？</p>
+                <div class="faq-answer">
+                    <p>本EAはユーロドル専用に開発・最適化されています。複数の通貨ペアに対応するEAは一見魅力的に思えますが、各通貨ペアには固有の特性があり、真に優位性のあるロジックを構築するには、特定の通貨ペアに特化することが重要です。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. 購入後のサポートはありますか？</p>
+                <div class="faq-answer">
+                    <p>はい、導入時の設定サポートを完備しています。また、システムのアップデートや不具合に関するサポートも提供しています。ただし、法律上の制約により、投資に関するアドバイスはできませんのでご了承ください。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q. 返金保証はありますか？</p>
+                <div class="faq-answer">
+                    <p>システムの性質上、購入後の返金には対応しておりません。これは、一度EAのロジックが公開されると、コピーされるリスクがあるためです。そのため、購入前に十分ご検討いただくようお願いいたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #000; padding: 50px 0; text-align: center;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; background-color: rgba(255, 215, 0, 0.1); padding: 30px; border: 2px solid #FFD700;">
+                <h2 style="margin-bottom: 30px;">限定10名様のみ<br>特別価格でご提供</h2>
+                
+                <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 30px; margin: 30px 0;">
+                    <div style="text-decoration: line-through; color: #888; font-size: 2rem;">通常価格: ¥500,000</div>
+                    <div style="color: #FFD700; font-size: 2.5rem; font-weight: bold;">特別価格: ¥300,000</div>
+                </div>
+                
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                    <span style="background-color: #FFD700; color: #000; padding: 3px 8px;">10ヶ月以内に投資回収を目指せるシステム設計</span>
+                </p>
+                
+                <a href="#" class="cta-button pulse">
+                    今すぐ価値ある投資を始める<br>
+                    <span style="font-size: 0.8rem;">（クリックで決済フォームへ）</span>
+                </a>
+                
+                <p class="limited-notice" style="font-size: 1.2rem; margin-top: 20px;">
+                    ※残り<span style="color: #ff4d4f; font-weight: bold;">3名様</span>限定・売り切れ次第終了※
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 30px;">© 2024 EURO-DOLLAR PRECISION TRADER All Rights Reserved.</p>
+            
+            <div class="disclaimer">
+                <p><strong>免責事項:</strong> 本サイトに記載されている投資成績や数値はバックテストや実運用に基づくものですが、将来の運用成績を保証するものではありません。投資には必ずリスクが伴います。本システムを利用した投資の最終判断はすべてお客様ご自身の責任において行ってください。</p>
+                <p>当サイトに記載された情報は投資判断の参考として提供されるものであり、投資に関する助言を構成するものではありません。また、過去の成績が将来のパフォーマンスを保証するものではありません。</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
